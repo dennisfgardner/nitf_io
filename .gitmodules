@@ -1,0 +1,6 @@
+[submodule "nitro"]
+	path = nitro
+	url = https://github.com/mdaus/nitro.git
+[submodule "opencv"]
+	path = opencv
+	url = https://github.com/opencv/opencv.git
