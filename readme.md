@@ -26,5 +26,12 @@ cmake --build ./build
 ## Run NITF Reader
 
 ```bash
-./build/nitf_reader
+./build/nitf_reader ./nitfs/WPAFB-21Oct2009/Data/TRAIN/NITF/20091021203206-01000611-VIS.ntf.r4
+```
+
+## Check for memory leaks 
+
+```bash
+apt install valgrind
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./build/nitf_reader ./nitfs/WPAFB-21Oct2009/Data/TRAIN/NITF/20091021203206-01000611-VIS.ntf.r4
 ```
