@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 project(nitf_reader)
-add_executable(nitf_reader main.cpp)
+add_executable(nitf_reader main.cpp print_header.cpp)
 
 target_include_directories(nitf_reader PUBLIC /usr/local/include/)
 target_link_directories(nitf_reader PUBLIC /usr/local/lib)

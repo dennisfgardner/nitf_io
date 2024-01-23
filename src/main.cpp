@@ -1,11 +1,4 @@
-#include <string>
-#include <iostream>
-#include <filesystem>
-
-#include <import/str.h>
-#include <import/sys.h>
-
-#include <import/nitf.hpp>
+#include "nitf_reader.hpp"
 
 using std::cout;
 using std::cerr;
@@ -41,7 +34,8 @@ int main(int argc, char** argv){
     nitf::IOHandle handle(nitf_filepath);
     cout << "NITF file opened." << "\n";
 
-    nitf::Version nitf_version = nitf::Reader::getNITFVersion(handle);
+    nitf::Reader reader;
+    nitf::Version nitf_version = reader.getNITFVersion(handle);
     if (IS_NITF20(nitf_version)){
         cout << "NITF file version: 2.0\n";
     } else if (IS_NITF21(nitf_version)){
@@ -53,8 +47,10 @@ int main(int argc, char** argv){
         return EXIT_FAILURE;
     }
 
-    // nitf::Reader reader;
-    // nitf::Record record = reader.read(handle);
+    nitf::Record record = reader.read(handle);
+    nitf::FileHeader file_header = record.getHeader();
+    print_header(file_header);
+
     handle.close();
     cout << "NITF file closed." << "\n";
 
