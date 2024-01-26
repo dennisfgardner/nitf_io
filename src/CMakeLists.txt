@@ -1,6 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
 project(nitf_reader)
-add_executable(nitf_reader main.cpp print_header.cpp)
+add_executable(
+    nitf_reader
+    main.cpp
+    print_nitf_header.cpp
+    print_img_seg_info.cpp
+    print_img_seg_header.cpp
+)
+
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+target_link_libraries( nitf_reader ${OpenCV_LIBS} )
 
 target_include_directories(nitf_reader PUBLIC /usr/local/include/)
 target_link_directories(nitf_reader PUBLIC /usr/local/lib)
