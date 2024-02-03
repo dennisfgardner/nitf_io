@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 
     if (argc != 2){
         cerr << "ERROR: incorrect number of arguments\n";
-        cerr << "correct usage: nitf_reader <path_to_nitf_file>" << endl;
+        cerr << "correct usage: print_header <path_to_nitf_file>" << endl;
         return EXIT_FAILURE;
     }
 

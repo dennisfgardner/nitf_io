@@ -30,9 +30,6 @@ target_link_libraries(
 add_executable(
     write_images
     main_write_images.cpp
-    print_nitf_header.cpp
-    print_img_seg_info.cpp
-    print_img_seg_header.cpp
     helpers.cpp
 )
 target_link_libraries( write_images ${OpenCV_LIBS} )
@@ -48,4 +45,20 @@ target_link_libraries(
 )
 
 # round tripping
-# TODO
+# write out image segments
+add_executable(
+    round_trip
+    main_round_trip.cpp
+    helpers.cpp
+)
+target_link_libraries( round_trip ${OpenCV_LIBS} )
+target_include_directories(round_trip PUBLIC /usr/local/include/)
+target_link_directories(round_trip PUBLIC /usr/local/lib)
+target_link_libraries(
+    round_trip libcgm-c.a libcli-c++.a libdbi-c++.a libexcept-c++.a
+    libio-c++.a libj2k-c.a libjpeg.a liblogging-c++.a libmath-c++.a
+    libmath.linear-c++.a libmem-c++.a libmt-c++.a libnitf-c++.a libnitf-c.a
+    libnrt-c.a libnumpyutils-c++.a libopenjpeg.a libplugin-c++.a
+    libpolygon-c++.a libsio.lite-c++.a libsys-c++.a libstr-c++.a libtiff-c++.a
+    libtypes-c++.a libxerces-c.a libxml.lite-c++.a libz.a
+)
