@@ -22,4 +22,4 @@ WORKDIR /setup/opencv
 RUN cmake -DBUILD_LIST=core,imgcodecs,imgproc -DCMAKE_CXX_FLAGS="-fpermissive"  -S . -B ./build
 RUN cmake --build ./build -j8
 RUN cmake --build ./build --target install
-WORKDIR /home/nitf_reader/
+WORKDIR /home/nitf_io/
